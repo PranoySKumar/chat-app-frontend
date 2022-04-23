@@ -46,8 +46,6 @@ export default function MessageDisplay(props: Props) {
   const [message, type, alias, time] = props.message;
 
   const isSender = alias === localStorage.getItem("USER_ALIAS");
-  console.log("alias", alias);
-  console.log("localStorageAlias", localStorage.getItem("USER_ALIAS"));
   switch (type) {
     case MESSAGES.notification:
       return (
