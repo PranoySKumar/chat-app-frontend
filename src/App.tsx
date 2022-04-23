@@ -3,7 +3,6 @@ import { configureAxios } from "./utils/axios-util";
 import { Route, Routes } from "react-router-dom";
 import ChatPage from "./pages/ChatPage/ChatPage";
 import { CssBaseline } from "@mui/material";
-import NavBar from "./components/UI/NavBar";
 //initialising utils
 configureAxios();
 

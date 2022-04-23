@@ -27,7 +27,12 @@ const Message = (props: { time: string; message: string; alias: string; alignSel
       </Typography>
     )}
 
-    <Typography lineHeight="1" color={"#58007e"} sx={{ wordWrap: "break-word" }} fontSize={"0.9rem"}>
+    <Typography
+      lineHeight="1"
+      color={"#58007e"}
+      sx={{ wordWrap: "break-word" }}
+      fontSize={"0.9rem"}
+    >
       {props.message}
     </Typography>
     <Typography fontSize={"0.8rem"} color={"#9400d3"} textAlign={"right"}>
@@ -39,7 +44,10 @@ const Message = (props: { time: string; message: string; alias: string; alignSel
 //MainExport
 export default function MessageDisplay(props: Props) {
   const [message, type, alias, time] = props.message;
+
   const isSender = alias === localStorage.getItem("USER_ALIAS");
+  console.log("alias", alias);
+  console.log("localStorageAlias", localStorage.getItem("USER_ALIAS"));
   switch (type) {
     case MESSAGES.notification:
       return (
@@ -60,10 +68,19 @@ export default function MessageDisplay(props: Props) {
     case MESSAGES.message:
       switch (isSender) {
         case true:
-          return <Message message={message} alias={""} alignSelf={"flex-end"} time={time as string} />;
+          return (
+            <Message message={message} alias={""} alignSelf={"flex-end"} time={time as string} />
+          );
 
         case false:
-          return <Message message={message} alias={alias!} alignSelf="flex-start" time={time as string} />;
+          return (
+            <Message
+              message={message}
+              alias={alias!}
+              alignSelf="flex-start"
+              time={time as string}
+            />
+          );
       }
       break;
     default:
