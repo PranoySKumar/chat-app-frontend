@@ -20,7 +20,7 @@ interface ClientToServerEvents {
 export let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 export function createSocketConnection(dispatch: AppDispatch, navigate: /*  */ NavigateFunction) {
-  socket = io("http://localhost:4000", {
+  socket = io("https://teatimecornerbackend.onrender.com", {
     auth: {
       user_id: sessionStorage.getItem("USER_ID") || "",
       room_id: sessionStorage.getItem("ROOM_ID"),
