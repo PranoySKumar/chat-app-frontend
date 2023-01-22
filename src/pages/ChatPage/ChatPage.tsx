@@ -34,7 +34,7 @@ export default function ChatPage() {
 
   //setup
   useEffect(() => {
-    if (!localStorage.getItem("USER_ALIAS")) {
+    if (!sessionStorage.getItem("USER_ALIAS")) {
       navigate("/");
     }
     //creates socket connection
@@ -71,7 +71,7 @@ type Response = {
 
 const fetchListOfParicipants = async (dispatch: AppDispatch) => {
   axiosAPI
-    .get<Response>("/data/fetch-users/" + localStorage.getItem("ROOM_ID"))
+    .get<Response>("/data/fetch-users/" + sessionStorage.getItem("ROOM_ID"))
     .then((response) => {
       console.log(response.data);
       dispatch(chatActions.initialiseAliases(response.data.participants));

@@ -6,7 +6,7 @@ import { socket } from "../socket-io";
 
 export function initialseSocketNotificationManager(dispatch: AppDispatch) {
   socket.on("user_joined", (alias, user_id) => {
-    if (user_id === localStorage.getItem("USER_ID")) {
+    if (user_id === sessionStorage.getItem("USER_ID")) {
       return;
     }
     const participant: participant = { user_id, alias };

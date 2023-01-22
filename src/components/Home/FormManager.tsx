@@ -18,12 +18,12 @@ export default function FormManager(props: ReactProps): JSX.Element {
   const joinRoom = (id: string) => {
     setIsLoading(true);
     axiosAPI
-      .get<Response>(`auth/join-room/${id}/?alias=${localStorage.getItem("USER_ALIAS")}`)
+      .get<Response>(`auth/join-room/${id}/?alias=${sessionStorage.getItem("USER_ALIAS")}`)
       .then((response) => {
-        window.localStorage.setItem("USER_ID", response.data.user_id);
-        window.localStorage.setItem("ROOM_ID", response.data.room_id);
+        window.sessionStorage.setItem("USER_ID", response.data.user_id);
+        window.sessionStorage.setItem("ROOM_ID", response.data.room_id);
         //navigate to chat box
-        navigate("/chatbox", { state: { user_id: localStorage.getItem("USER_ALIAS") } });
+        navigate("/chatbox", { state: { user_id: sessionStorage.getItem("USER_ALIAS") } });
       })
       .catch((error) => {
         console.log(error);
@@ -34,7 +34,7 @@ export default function FormManager(props: ReactProps): JSX.Element {
   const onNext = (alias: string | undefined) => {
     if (alias?.trim()) {
       setNext(true);
-      localStorage.setItem("USER_ALIAS", alias);
+      sessionStorage.setItem("USER_ALIAS", alias);
     } else {
       alert("please enter a valid alias name");
     }
@@ -43,11 +43,11 @@ export default function FormManager(props: ReactProps): JSX.Element {
   const createRoom = () => {
     setIsLoading(true);
     axiosAPI
-      .get<Response>(`auth/create-room/?alias=${localStorage.getItem("USER_ALIAS")}`)
+      .get<Response>(`auth/create-room/?alias=${sessionStorage.getItem("USER_ALIAS")}`)
       .then((response) => {
-        window.localStorage.setItem("USER_ID", response.data.user_id);
-        window.localStorage.setItem("ROOM_ID", response.data.room_id);
-        navigate("/chatbox", { state: { user_id: localStorage.getItem("USER_ALIAS") } });
+        window.sessionStorage.setItem("USER_ID", response.data.user_id);
+        window.sessionStorage.setItem("ROOM_ID", response.data.room_id);
+        navigate("/chatbox", { state: { user_id: sessionStorage.getItem("USER_ALIAS") } });
       })
       .catch((error) => {
         console.log(error);

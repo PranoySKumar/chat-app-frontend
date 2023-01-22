@@ -22,13 +22,13 @@ export let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 export function createSocketConnection(dispatch: AppDispatch, navigate: /*  */ NavigateFunction) {
   socket = io("http://localhost:4000", {
     auth: {
-      user_id: localStorage.getItem("USER_ID") || "",
-      room_id: localStorage.getItem("ROOM_ID"),
+      user_id: sessionStorage.getItem("USER_ID") || "",
+      room_id: sessionStorage.getItem("ROOM_ID"),
     },
   });
   socket.on("connect", () => {});
   socket.on("connect_error", () => {
-    localStorage.clear();
+    sessionStorage.clear();
     dispatch(chatActions.reset());
     dispatch(uiActions.reset());
     dispatch(messageActions.reset());

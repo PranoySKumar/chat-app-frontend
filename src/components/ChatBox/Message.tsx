@@ -45,7 +45,8 @@ const Message = (props: { time: string; message: string; alias: string; alignSel
 export default function MessageDisplay(props: Props) {
   const [message, type, alias, time] = props.message;
 
-  const isSender = alias === localStorage.getItem("USER_ALIAS");
+  const isSender = alias === sessionStorage.getItem("USER_ALIAS");
+
   switch (type) {
     case MESSAGES.notification:
       return (

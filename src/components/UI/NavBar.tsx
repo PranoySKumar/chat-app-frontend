@@ -19,7 +19,7 @@ export default function NavBar() {
     dispatch(uiActions.toggleDrawer(true));
   };
   const onLogOutHandler = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     dispatch(chatActions.reset());
     dispatch(uiActions.reset());
     dispatch(messageActions.reset());
@@ -27,7 +27,7 @@ export default function NavBar() {
     navigate("/");
   };
   const copyToClipBoard = async () => {
-    const room_id = localStorage.getItem("ROOM_ID");
+    const room_id = sessionStorage.getItem("ROOM_ID");
     await navigator.clipboard.writeText(room_id!);
     toast.success("🦄 copied!", {
       position: "top-right",
