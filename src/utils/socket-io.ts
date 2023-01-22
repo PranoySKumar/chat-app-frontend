@@ -19,8 +19,8 @@ interface ClientToServerEvents {
 
 export let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
-export function createSocketConnection(dispatch: AppDispatch, navigate: NavigateFunction) {
-  socket = io("https://tea-time-corner.herokuapp.com/", {
+export function createSocketConnection(dispatch: AppDispatch, navigate: /*  */ NavigateFunction) {
+  socket = io("http://localhost:4000", {
     auth: {
       user_id: localStorage.getItem("USER_ID") || "",
       room_id: localStorage.getItem("ROOM_ID"),

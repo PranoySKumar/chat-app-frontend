@@ -4,7 +4,7 @@ export let axiosAPI: AxiosInstance;
 
 export function configureAxios() {
   axiosAPI = axios.create({
-    baseURL: "https://tea-time-corner.herokuapp.com/",
+    baseURL: "http://localhost:4000/",
   });
 }
 // "https://teatimechatapp.herokuapp.com/"
